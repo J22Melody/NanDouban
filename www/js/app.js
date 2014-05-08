@@ -71,13 +71,11 @@ app.controller('SearchController',function ($scope,$location) {
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.book = res;
   });
-}).controller('BorrowController',function ($scope,$routeParams) {
+}).controller('BorrowController',function ($scope,$routeParams,$http,$sanitize) {
   var isbn = $routeParams.isbn;
-  // require(['fetch-nju-lib'],function(fnl){
-    var content = fetchBookByIsbn(isbn);
-    //todo (Do not manipulate DOM in your controllers)
-    $('#borrowInfo').append(content);
-  // });
+  $http.get("http://localhost:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
+    $scope.borrowInfo = res;
+  });
 }).controller('AnnotationsController',function ($scope,$routeParams,$http) {
   var id = $routeParams.id;
 
