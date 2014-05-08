@@ -7,7 +7,11 @@ var fetchBookByIsbn = function(isbn,callback){
 
     request(search_page_url,function (error, response, body){
         var search_result_page = body;
-        var book_page_url = search_result_page.match(/item\.php\?marc_no=\d+/)[0];
+        try{
+            var book_page_url = search_result_page.match(/item\.php\?marc_no=\d+/)[0];
+        }catch(err){
+            callback('馆内没有此图书');
+        }
         book_page_url = 'http://calis2.nju.edu.cn:8080/opac/' + book_page_url;
 
         request(book_page_url,function (error, response, body){

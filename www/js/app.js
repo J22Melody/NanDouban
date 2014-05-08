@@ -73,7 +73,7 @@ app.controller('SearchController',function ($scope,$location) {
   });
 }).controller('BorrowController',function ($scope,$routeParams,$http,$sanitize) {
   var isbn = $routeParams.isbn;
-  $http.get("http://vps.jiangzifan.com:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
+  $http.get("http://localhost:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
     $scope.borrowInfo = res;
   });
 }).controller('AnnotationsController',function ($scope,$routeParams,$http) {
