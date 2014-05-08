@@ -1,0 +1,8 @@
+<h3>{{book.title}}</h3>
+<span>作者：{{book.author.join(',')}}<span ng-if="book.translator">（{{book.translator.join(',')}}译）</span></span><br/>
+<span>出版社/时间：{{book.publisher}} / {{book.pubdate}}</span><br/>
+<span>页数：{{book.pages}}</span><br/>
+<span>定价：{{book.price}}</span><br/>
+<span>ISBN：{{book.isbn13}}</span><br/>
+<span>评分：{{book.rating.average}}（{{book.rating.numRaters}}人评分）</span><br/>
+<img ng-src="{{book.image}}" /> 

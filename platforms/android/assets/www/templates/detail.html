@@ -1,0 +1,17 @@
+<ng-include src="'templates/basic_info.html'"></ng-include>
+<section>
+    <h6>内容简介</h6>
+    <p ng-bind-html="book.summary|douban"></p>
+</section>
+<section>
+    <h6>作者简介</h6>
+    <p ng-bind-html="book.author_intro|douban"></p>
+</section>
+<section>
+    <h6>目录</h6>
+    <p ng-bind-html="book.catalog|douban"></p>
+</section>
+<a ng-href="#/borrow/{{book.isbn13}}">馆藏信息</a>
+<a ng-href="#/detail/{{book.id}}/annotations">读书笔记</a>
+<!-- <a href="#/detail/{{book.id}}/reviews">书评</a> -->
+<a ng-href="http://book.douban.com/subject/{{book.id}}/reviews">书评</a>

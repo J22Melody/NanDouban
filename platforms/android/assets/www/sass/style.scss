@@ -1,0 +1,140 @@
+//reset
+@import "compass/reset";
+//css3 mixin
+@import "compass/css3";
+//util mixin
+@import "compass/utilities/general";
+
+//global style
+body{
+    font: 0.875rem 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+    color: #999;
+}
+
+a{
+    color: #0088cc;
+    text-decoration: none;
+}
+
+h3{
+    color: #222;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+//button
+%btn{
+    display:inline-block;
+    cursor: pointer;
+    padding: 4px 6px;
+    @include border-radius(4px);
+    @include box-shadow(inset 0 1px 0 rgba(255,255,255,0.2),0 1px 2px rgba(0,0,0,0.05));
+    border: 1px solid #ccc;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    &:hover{
+        @include background-image(none);
+    }
+}
+
+.btn-do{
+    @extend %btn;
+    color: #fff;
+    background-color: #006dcc;
+    @include background-image(linear-gradient(top,#08c,#04c));
+    &:hover{
+        background-color: #04c;
+    }
+}
+
+.btn-undo{
+    @extend %btn;
+    color: #fff;
+    background-color: #363636;
+    @include background-image(linear-gradient(top,#444,#222));
+    &:hover{
+        background-color: #222;
+    }
+}
+
+//container
+#container{
+    width: 100%;
+    max-width: 960px;
+    padding: 10px;
+    margin: 0 auto; 
+}
+
+//panel
+.panel{
+    border: 1px solid #ddd;
+    @include border-radius(5px);
+    padding: 20px 14px;
+
+    .desc{
+        a,span{
+            margin: 5px;
+        }
+    }
+}
+
+//input search
+.search{
+    @include border-radius(4px);
+    outline: none;
+    border: 1px solid #ccc;
+    @include box-shadow(0 1px 1px rgba(0,0,0,.1) inset);
+    height: 28px;
+    width: 136px;
+    padding: 0 10px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+
+    &:focus{
+        @include box-shadow(0 0 4px #0088cc);
+        border: 1px solid lighten(#0088cc,70%);
+    }
+}
+
+//list of users
+.user-list{
+    @include clearfix;
+
+    li{
+        height: 60px;
+        margin: 10px 0;
+
+        //mobile first and media query for large device
+
+        @media screen and (min-width:640px){
+            float: left;
+            width: 48%;
+            &:nth-child(odd){
+                margin-right: 4%;
+            } 
+        }
+
+        >img,>div{
+            float: left;
+        }
+
+        >div{
+            margin-left: 12px;
+
+            >a{
+                display: block;
+                margin-bottom: 2px;
+            }
+
+            >span{
+                color: #222;
+            }
+        }
+
+        >%btn{
+            float: right;
+        }
+    }
+}
+
+
