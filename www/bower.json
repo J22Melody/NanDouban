@@ -1,0 +1,13 @@
+{
+  "name": "www",
+  "version": "0.0.0",
+  "homepage": "https://github.com/J22Melody/NanDouban",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.2.16"
+  },
+  "devDependencies": {
+    "angular-route": "~1.2.16",
+    "angular-sanitize": "~1.2.16"
+  }
+}
