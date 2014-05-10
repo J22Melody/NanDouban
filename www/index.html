@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>南豆瓣</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src='bower_components/angular-route/angular-route.min.js'></script>
+
+    <script src="js/app.js"></script>
+
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+    <script src="cordova.js"></script>
+  </head>
+  <body ng-app="app">
+
+    <!-- Center content -->
+
+      <ion-header-bar class="bar-dark">
+    
+        <h1 class="title">南豆瓣</h1>
+
+      </ion-header-bar>
+
+      <ion-content>
+
+        <div ng-view></div>
+
+      </ion-content>
+
+  </body>
+</html>
