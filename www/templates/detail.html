@@ -11,7 +11,6 @@
     <h6>目录</h6>
     <p ng-bind-html="book.catalog|douban"></p>
 </section>
-<a ng-href="#/borrow/{{book.isbn13}}">馆藏信息</a>
-<a ng-href="#/detail/{{book.id}}/annotations">读书笔记</a>
-<!-- <a href="#/detail/{{book.id}}/reviews">书评</a> -->
-<a ng-href="http://book.douban.com/subject/{{book.id}}/reviews">书评</a>
+<a ui-sref="borrow({isbn: book.isbn13})">馆藏信息</a>
+<a ui-sref="annotations({id: book.id})">读书笔记</a>
+<a ui-sref="reviews({id: book.id})">书评</a>

@@ -1,5 +1,5 @@
 // create module
-angular.module('app', ['ionic','ngRoute'])
+angular.module('app', ['ionic'])
 
 // custom filter
 .filter('douban',function(){
