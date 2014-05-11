@@ -11,41 +11,51 @@ angular.module('app', ['ionic','ngRoute'])
 })
 
 // url route
-.config(function($routeProvider) {
-  $routeProvider.
-  when('/', {
+.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise('/'); 
+
+  $stateProvider.
+  state('search', {
+    url: "/",
     controller: 'SearchController',
     templateUrl: 'templates/search.html' 
   }).
-  when('/search/:q', {
+  state('list', {
+    url: '/search/:q',
     controller: 'ListController',
     templateUrl: 'templates/list.html' 
   }).
-  when('/detail/:id', {
+  state('detail', {
+    url: '/detail/:id',
     controller: 'DetailController',
     templateUrl: 'templates/detail.html' 
   }).
-  when('/borrow/:isbn', {
+  state('borrow', {
+    url: '/borrow/:isbn',
     controller: 'BorrowController',
     templateUrl: 'templates/borrow.html' 
   }).
-  when('/detail/:id/annotations', {
+  state('annotations', {
+    url: '/detail/:id/annotations',
     controller: 'AnnotationsController',
     templateUrl: 'templates/annotations.html' 
   }).
-  when('/detail/:id/reviews', {
+  state('reviews', {
+    url: '/detail/:id/reviews',
     controller: 'ReviewsController',
     templateUrl: 'templates/reviews.html' 
   }).
-  when('/annotation/:id', {
+  state('annotation', {
+    url: '/annotation/:id',
     controller: 'AnnotationController',
     templateUrl: 'templates/annotation.html' 
   }).
-  when('/review/:id', { 
+  state('review', { 
+    url: '/review/:id',
     controller: 'ReviewController',
     templateUrl: 'templates/review.html' 
-  }).
-  otherwise({ redirectTo: '/'}); 
+  });
 })
 
 // controllers
@@ -54,8 +64,8 @@ angular.module('app', ['ionic','ngRoute'])
     var url = "/search/" + $scope.q;
     $location.path(url);
   }
-}).controller('ListController',function ($scope,$routeParams,$http) {
-  var q = $routeParams.q;
+}).controller('ListController',function ($scope,$stateParams,$http) {
+  var q = $stateParams.q;
 
   $http.get("https://api.douban.com/v2/book/search",
   {
@@ -63,31 +73,31 @@ angular.module('app', ['ionic','ngRoute'])
   }).success(function(res){
     $scope.books = res.books;
   });
-}).controller('DetailController',function ($scope,$routeParams,$http,$sanitize) {
-  var id = $routeParams.id;
+}).controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
+  var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.book = res;
   });
-}).controller('BorrowController',function ($scope,$routeParams,$http,$sanitize) {
-  var isbn = $routeParams.isbn;
+}).controller('BorrowController',function ($scope,$stateParams,$http,$sanitize) {
+  var isbn = $stateParams.isbn;
   $http.get("http://vps.jiangzifan.com:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
     $scope.borrowInfo = res;
   });
-}).controller('AnnotationsController',function ($scope,$routeParams,$http) {
-  var id = $routeParams.id;
+}).controller('AnnotationsController',function ($scope,$stateParams,$http) {
+  var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id+"/annotations").success(function(res){
     $scope.annotations = res.annotations;
   });
-}).controller('AnnotationController',function ($scope,$routeParams,$http,$sanitize) {
-  var id = $routeParams.id; 
+}).controller('AnnotationController',function ($scope,$stateParams,$http,$sanitize) {
+  var id = $stateParams.id; 
 
   $http.get("https://api.douban.com/v2/book/annotation/"+id).success(function(res){ 
     $scope.annotation = res;
   });
-}).controller('ReviewsController',function ($scope,$routeParams,$http) {
+}).controller('ReviewsController',function ($scope,$stateParams,$http) {
 
-}).controller('ReviewController',function ($scope,$routeParams,$http) {
+}).controller('ReviewController',function ($scope,$stateParams,$http) {
 
 });
