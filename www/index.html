@@ -6,7 +6,8 @@
     <title>南豆瓣</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
@@ -15,21 +16,47 @@
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
   </head>
-  <body ng-app="app">
+  <body ng-app="app" ng-controller="MainController">
 
-    <!-- Center content -->
+    <ion-side-menus>
 
-      <ion-header-bar class="bar-dark">
+      <ion-side-menu-content>
+
+        <ion-header-bar class="bar bar-header bar-balanced">
+
+          <button class="button button-icon" ng-click="historyBack()" ng-hide="$state.current.name == 'search'"> 
+            <i class="icon ion-arrow-left-c"></i>
+          </button>
     
-        <h1 class="title">南豆瓣</h1>
+          <h1 class="title">南豆瓣</h1>
 
-      </ion-header-bar>
+          <button class="button button-icon" ng-click="getMenu()">
+            <i class="icon ion-navicon"></i>
+          </button>
 
-      <ion-content>
+        </ion-header-bar>
 
-        <div ui-view></div>
+        <ion-content>
+          <div ui-view></div>
+        </ion-content>
 
-      </ion-content>
+      </ion-side-menu-content>
+
+      <ion-side-menu side="left">
+
+        <ion-header-bar class="bar bar-header bar-balanced">
+          <h1 class="title">导航</h1>
+        </ion-header-bar>
+
+        <ion-content>
+          <div class="list">
+            <a class="item" ui-sref="search"><i class="icon ion-search" style="margin-right: 10px;"></i>搜书</a>
+          </div>
+        </ion-content>
+
+      </ion-side-menu>
+
+    </ion-side-menus>
 
   </body>
 </html>

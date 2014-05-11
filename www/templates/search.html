@@ -1,4 +1,8 @@
-<form ng-submit="search()">
-    <input type="text" ng-model="q" />
-    <input type="submit" />
+<form ng-submit="search()" id="search-form">
+    <label class="item item-input">
+        <input type="text" ng-model="q" placeholder="书名，作者，ISBN ..." />
+    </label>
+    <button type="submit" class="button button-balanced button-block button-outline">
+        <i class="icon ion-search"></i>
+    </button>
 </form>

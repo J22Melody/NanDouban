@@ -1,6 +1,6 @@
-<ul>
-    <li ng-repeat="book in books">
-        <a ui-sref="detail({id: book.id})">
+<ul class="list">
+    <li ng-repeat="book in books" class="item">
+        <a ui-sref="detail({id: book.id})" class="basic-info">
             <ng-include src="'templates/basic_info.html'"></ng-include> 
         </a>
     </li>

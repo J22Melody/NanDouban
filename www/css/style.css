@@ -1,1 +1,23 @@
-/* Empty. Add your own CSS if you like */
+/* line 4, ../sass/style.scss */
+#search-form {
+  margin-top: 50px;
+  padding: 10px;
+}
+
+/* line 9, ../sass/style.scss */
+.basic-info {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  text-decoration: none;
+  color: #333;
+}
+/* line 18, ../sass/style.scss */
+.basic-info .info {
+  margin-left: 40px;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+}

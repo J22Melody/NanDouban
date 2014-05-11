@@ -1,7 +1,7 @@
 // create module
 angular.module('app', ['ionic'])
 
-// custom filter
+// custom filters
 .filter('douban',function(){
   return function(str){
     if(str === undefined) return str;
@@ -10,7 +10,7 @@ angular.module('app', ['ionic'])
   };
 })
 
-// url route
+// url routes
 .config(function($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/'); 
@@ -59,12 +59,24 @@ angular.module('app', ['ionic'])
 })
 
 // controllers
-.controller('SearchController',function ($scope,$location) {
-  $scope.search = function(){
-    var url = "/search/" + $scope.q;
-    $location.path(url);
+
+.controller('MainController',function ($scope,$state,$ionicSideMenuDelegate,$window) {
+  $scope.$state = $state;
+
+  $scope.getMenu = function(){
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+
+  $scope.historyBack = function(){
+    $window.history.back();
   }
-}).controller('ListController',function ($scope,$stateParams,$http) {
+})
+.controller('SearchController',function ($scope) {
+  $scope.search = function(){
+    $scope.$parent.$state.go('list',{q: $scope.q});
+  };
+})
+.controller('ListController',function ($scope,$stateParams,$http) {
   var q = $stateParams.q;
 
   $http.get("https://api.douban.com/v2/book/search",
@@ -73,31 +85,49 @@ angular.module('app', ['ionic'])
   }).success(function(res){
     $scope.books = res.books;
   });
-}).controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
+})
+.controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
   var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.book = res;
   });
-}).controller('BorrowController',function ($scope,$stateParams,$http,$sanitize) {
+})
+.controller('BorrowController',function ($scope,$stateParams,$http,$sanitize) {
   var isbn = $stateParams.isbn;
   $http.get("http://vps.jiangzifan.com:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
     $scope.borrowInfo = res;
   });
-}).controller('AnnotationsController',function ($scope,$stateParams,$http) {
+})
+.controller('AnnotationsController',function ($scope,$stateParams,$http) {
   var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id+"/annotations").success(function(res){
     $scope.annotations = res.annotations;
   });
-}).controller('AnnotationController',function ($scope,$stateParams,$http,$sanitize) {
+})
+.controller('AnnotationController',function ($scope,$stateParams,$http,$sanitize) {
   var id = $stateParams.id; 
 
   $http.get("https://api.douban.com/v2/book/annotation/"+id).success(function(res){ 
     $scope.annotation = res;
   });
-}).controller('ReviewsController',function ($scope,$stateParams,$http) {
+})
+.controller('ReviewsController',function ($scope,$stateParams,$http) {
 
-}).controller('ReviewController',function ($scope,$stateParams,$http) {
+})
+.controller('ReviewController',function ($scope,$stateParams,$http) {
 
 });
+
+// custom directives
+// .directive('back', ['$window', function($window) {
+//   return {
+//     restrict: 'A',
+//     link: function (scope, elem, attrs) {
+//       elem.bind('click', function () {
+//         $window.history.back();
+//       });
+//     }
+//   };
+// }]);

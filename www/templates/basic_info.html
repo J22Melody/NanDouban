@@ -1,8 +1,14 @@
-<h3>{{book.title}}</h3>
-<span>作者：{{book.author.join(',')}}<span ng-if="book.translator">（{{book.translator.join(',')}}译）</span></span><br/>
-<span>出版社/时间：{{book.publisher}} / {{book.pubdate}}</span><br/>
-<span>页数：{{book.pages}}</span><br/>
-<span>定价：{{book.price}}</span><br/>
-<span>ISBN：{{book.isbn13}}</span><br/>
-<span>评分：{{book.rating.average}}（{{book.rating.numRaters}}人评分）</span><br/>
 <img ng-src="{{book.image}}" /> 
+<div class="info">  
+    <h3>{{book.title}}</h3>
+    <span>{{book.author.join(',')}}<span ng-if="book.translator">（{{book.translator.join(',')}}译）</span></span><br/>
+    <span>{{book.publisher}} / {{book.pubdate}}</span><br/>
+    <span>页数：{{book.pages}}</span><br/>
+    <span>价格：{{book.price}}</span><br/> 
+    <span>ISBN：{{book.isbn13}}</span><br/>
+    <span>
+        <i class="icon ion-star" style="color: rgb(255, 108, 108);"></i>
+        <span style="color: rgb(255, 108, 108);">{{book.rating.average}}</span>（{{book.rating.numRaters}}人评分）
+    </span><br/>
+</div>
+
