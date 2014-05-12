@@ -27,17 +27,17 @@
           <button class="button button-icon" ng-click="historyBack()" ng-hide="$state.current.name == 'search'"> 
             <i class="icon ion-arrow-left-c"></i>
           </button>
-    
-          <h1 class="title">南豆瓣</h1>
 
           <button class="button button-icon" ng-click="getMenu()">
             <i class="icon ion-navicon"></i>
           </button>
+    
+          <h1 class="title">南豆瓣</h1>
 
         </ion-header-bar>
 
         <ion-content>
-          <div ui-view></div>
+          <ion-nav-view animation="slide-left-right"></ion-nav-view>
         </ion-content>
 
       </ion-side-menu-content>
