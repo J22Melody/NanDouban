@@ -7,56 +7,54 @@
 
 /* line 9, ../sass/style.scss */
 .basic-info {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-box;
-  display: box;
+  white-space: normal;
   text-decoration: none;
   color: #333;
 }
-/* line 15, ../sass/style.scss */
+/* line 14, ../sass/style.scss */
+.basic-info img {
+  float: left;
+  max-width: 100px;
+}
+/* line 19, ../sass/style.scss */
 .basic-info .info {
-  margin-left: 40px;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -ms-box-flex: 1;
-  box-flex: 1;
+  margin-left: 120px;
   font-size: 14px;
 }
-/* line 20, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
 .basic-info .info h3 {
   font-size: 16px;
 }
 
-/* line 26, ../sass/style.scss */
+/* line 29, ../sass/style.scss */
 #detail {
   padding: 12px;
 }
 
-/* line 30, ../sass/style.scss */
+/* line 33, ../sass/style.scss */
 section.block {
   margin: 20px 0;
 }
-/* line 33, ../sass/style.scss */
+/* line 36, ../sass/style.scss */
 section.block h6 {
   font-size: 16px;
 }
-/* line 36, ../sass/style.scss */
+/* line 39, ../sass/style.scss */
 section.block h6:after {
   margin-left: 12px;
   content: "· · · · · ·";
   color: #007722;
 }
-/* line 43, ../sass/style.scss */
+/* line 46, ../sass/style.scss */
 section.block .operation {
   width: 32%;
 }
 
-/* line 49, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 .borrow-list li {
   line-height: 1.5;
 }
-/* line 52, ../sass/style.scss */
+/* line 55, ../sass/style.scss */
 .borrow-list li h3 {
   font-size: 16px;
   display: inline;

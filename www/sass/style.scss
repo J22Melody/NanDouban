@@ -7,14 +7,17 @@
 }
 
 .basic-info{
-    @include display-box;
-
+    white-space: normal;
     text-decoration: none;
     color: #333;
 
+    img{
+        float: left;
+        max-width: 100px;
+    }
+
     .info{
-        margin-left: 40px;
-        @include box-flex(1);
+        margin-left: 120px;
         font-size: 14px; 
 
         h3{
