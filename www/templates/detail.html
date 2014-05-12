@@ -1,18 +1,24 @@
-<div class="basic-info">
-    <ng-include src="'templates/basic_info.html'"></ng-include>
-</div> 
-<section>
-    <h6>内容简介</h6>
-    <p ng-bind-html="book.summary|douban"></p>
-</section>
-<section>
-    <h6>作者简介</h6>
-    <p ng-bind-html="book.author_intro|douban"></p>
-</section>
-<section>
-    <h6>目录</h6>
-    <p ng-bind-html="book.catalog|douban"></p>
-</section>
-<a ui-sref="borrow({isbn: book.isbn13})">馆藏信息</a>
-<a ui-sref="annotations({id: book.id})">读书笔记</a>
-<a ui-sref="reviews({id: book.id})">书评</a>
+<div id="detail">
+    <div class="basic-info">
+        <ng-include src="'templates/basic_info.html'"></ng-include>
+    </div> 
+    <section class="block">
+        <a ui-sref="borrow({isbn: book.isbn13})" class="operation button button-balanced">馆藏信息</a>
+        <a ui-sref="annotations({id: book.id})" class="operation button button-balanced">读书笔记</a>
+        <a ui-sref="reviews({id: book.id})" class="operation button button-balanced">书评</a>
+    </section>
+    <section class="block">
+        <h6>内容简介</h6>
+        <p ng-bind-html="book.summary|douban"></p>
+    </section>
+    <section class="block">
+        <h6>作者简介</h6>
+        <p ng-bind-html="book.author_intro|douban"></p>
+    </section>
+    <section class="block">
+        <h6>目录</h6>
+        <p ng-bind-html="book.catalog|douban"></p>
+    </section>
+    
+</div>
+

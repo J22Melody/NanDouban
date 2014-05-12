@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* line 4, ../sass/style.scss */
 #search-form {
   margin-top: 50px;
@@ -24,11 +25,39 @@
 }
 /* line 20, ../sass/style.scss */
 .basic-info .info h3 {
-  margin-top: 12px;
   font-size: 16px;
 }
 
-/* line 27, ../sass/style.scss */
-.list .item h3 {
-  margin-top: 0;
+/* line 26, ../sass/style.scss */
+#detail {
+  padding: 12px;
+}
+
+/* line 30, ../sass/style.scss */
+section.block {
+  margin: 20px 0;
+}
+/* line 33, ../sass/style.scss */
+section.block h6 {
+  font-size: 16px;
+}
+/* line 36, ../sass/style.scss */
+section.block h6:after {
+  margin-left: 12px;
+  content: "· · · · · ·";
+  color: #007722;
+}
+/* line 43, ../sass/style.scss */
+section.block .operation {
+  width: 32%;
+}
+
+/* line 49, ../sass/style.scss */
+.borrow-list li {
+  line-height: 1.5;
+}
+/* line 52, ../sass/style.scss */
+.borrow-list li h3 {
+  font-size: 16px;
+  display: inline;
 }

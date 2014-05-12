@@ -1,1 +1,6 @@
-<div ng-bind-html="borrowInfo"></div>
+<ul class="list borrow-list">
+    <li ng-repeat="item in borrowData" class="item">
+        <h3>{{item.callNum}}</h3>  <span style="float: right;"><i style="margin-right: 4px;"  class="icon ion-home"></i>{{item.location}}</span> <br/>
+        <span>{{item.stripNum}}</span>  <span style="float: right;" ng-style="{true: {color: 'green'}, false: {}}[item.status == '可借']">{{item.status}}</span>
+    </li>
+</ul>

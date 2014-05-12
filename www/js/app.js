@@ -93,10 +93,10 @@ angular.module('app', ['ionic'])
     $scope.book = res;
   });
 })
-.controller('BorrowController',function ($scope,$stateParams,$http,$sanitize) {
+.controller('BorrowController',function ($scope,$stateParams,$http) {
   var isbn = $stateParams.isbn;
-  $http.get("http://vps.jiangzifan.com:3000/fetchBookByIsbn",{params:{'isbn': isbn}}).success(function(res){
-    $scope.borrowInfo = res;
+  $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
+    $scope.borrowData = res;
   });
 })
 .controller('AnnotationsController',function ($scope,$stateParams,$http) {

@@ -1,9 +1,16 @@
 var express = require('express');
 var app = express();
 
-app.get('/fetchBookByIsbn', function(req, res){
+app.get('/fetchBorrowTableByIsbn', function(req, res){
     var fnl = require('./fetch-nju-lib');
-    fnl.fetchBookByIsbn(req.query.isbn,function(data){
+    fnl.fetchBorrowTableByIsbn(req.query.isbn,function(data){
+        res.send(data);
+    });
+});
+
+app.get('/fetchBorrowDataByIsbn', function(req, res){
+    var fnl = require('./fetch-nju-lib');
+    fnl.fetchBorrowDataByIsbn(req.query.isbn,function(data){
         res.send(data);
     });
 });
