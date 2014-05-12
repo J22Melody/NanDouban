@@ -144,7 +144,9 @@ angular.module('app', ['ionic'])
   var isbn = $stateParams.isbn;
 
   $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
-    $scope.borrowData = res;
+    if(res != 'false'){
+      $scope.borrowData = res;
+    }
   });
 })
 .controller('AnnotationsController',function ($scope,$stateParams,$http) {
