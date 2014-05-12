@@ -161,6 +161,8 @@ angular.module('app', ['ionic'])
   $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
     if(res != 'false'){
       $scope.borrowData = res;
+    }else{
+      $scope.notFound = "没有在图书馆里找到这本书";
     }
   });
 })
