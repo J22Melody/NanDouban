@@ -1,60 +1,60 @@
 @charset "UTF-8";
-/* line 4, ../sass/style.scss */
+/* line 6, ../sass/style.scss */
 #search-form {
   margin-top: 50px;
   padding: 10px;
 }
 
-/* line 9, ../sass/style.scss */
+/* line 13, ../sass/style.scss */
 .basic-info {
   white-space: normal;
   text-decoration: none;
   color: #333;
 }
-/* line 14, ../sass/style.scss */
+/* line 18, ../sass/style.scss */
 .basic-info img {
   float: left;
   max-width: 100px;
 }
-/* line 19, ../sass/style.scss */
+/* line 23, ../sass/style.scss */
 .basic-info .info {
   margin-left: 120px;
   font-size: 14px;
 }
-/* line 23, ../sass/style.scss */
+/* line 27, ../sass/style.scss */
 .basic-info .info h3 {
   font-size: 16px;
 }
 
-/* line 29, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 #detail {
   padding: 12px;
 }
 
-/* line 33, ../sass/style.scss */
+/* line 39, ../sass/style.scss */
 section.block {
   margin: 20px 0;
 }
-/* line 36, ../sass/style.scss */
+/* line 42, ../sass/style.scss */
 section.block h6 {
   font-size: 16px;
 }
-/* line 39, ../sass/style.scss */
+/* line 45, ../sass/style.scss */
 section.block h6:after {
   margin-left: 12px;
   content: "· · · · · ·";
   color: #007722;
 }
-/* line 46, ../sass/style.scss */
+/* line 52, ../sass/style.scss */
 section.block .operation {
   width: 32%;
 }
 
-/* line 52, ../sass/style.scss */
+/* line 60, ../sass/style.scss */
 .borrow-list li {
   line-height: 1.5;
 }
-/* line 55, ../sass/style.scss */
+/* line 63, ../sass/style.scss */
 .borrow-list li h3 {
   font-size: 16px;
   display: inline;

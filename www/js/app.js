@@ -10,9 +10,9 @@ angular.module('app', ['ionic'])
   };
 })
 
-// url routes
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
+  // url routes
   $urlRouterProvider.otherwise('/'); 
 
   $stateProvider.
@@ -56,6 +56,35 @@ angular.module('app', ['ionic'])
     controller: 'ReviewController',
     templateUrl: 'templates/review.html' 
   });
+
+  //todo 提取$ionicLoading等有关网络的提示与处理到此处
+  $httpProvider.interceptors.push(function($q,$rootScope) {
+    var activeRequests = 0;
+    var started = function() {
+      if(activeRequests==0) {
+        $rootScope.$broadcast('loadingStatusActive');
+      }    
+      activeRequests++;
+    };
+    var ended = function() {
+      activeRequests--;
+      if(activeRequests==0) {
+        $rootScope.$broadcast('loadingStatusInactive');
+      }
+    };
+    return {
+      'request': function(config) {
+        started();
+        config.timeout = 20000;
+        return config || $q.when(config);
+      },
+      'response': function(response) {
+        ended();
+        return response || $q.when(response);
+      }
+    };
+  });
+
 })
 
 // controllers
@@ -76,7 +105,11 @@ angular.module('app', ['ionic'])
     $scope.$parent.$state.go('list',{q: $scope.q});
   };
 })
-.controller('ListController',function ($scope,$stateParams,$http) {
+.controller('ListController',function ($scope,$stateParams,$http,$ionicLoading,$ionicPopup) {
+  $ionicLoading.show({
+    template: '努力加载中 ...'
+  });
+
   var q = $stateParams.q;
 
   $http.get("https://api.douban.com/v2/book/search",
@@ -84,19 +117,49 @@ angular.module('app', ['ionic'])
     params: {'q': q}
   }).success(function(res){
     $scope.books = res.books;
+    $ionicLoading.hide(); 
+  }).error(function(res){
+    $ionicPopup.alert({
+      title: '出错啦',
+      template: '网络出问题了 >< <br/>' + res
+    }); 
+    $ionicLoading.hide(); 
   });
 })
-.controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
+.controller('DetailController',function ($scope,$stateParams,$http,$sanitize,$ionicLoading,$ionicPopup) {
+  $ionicLoading.show({
+    template: '努力加载中 ...'
+  });
+
   var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.book = res;
+    $ionicLoading.hide(); 
+  }).error(function(res){
+    $ionicPopup.alert({
+      title: '出错啦',
+      template: '网络出问题了 >< <br/>' + res
+    }); 
+    $ionicLoading.hide(); 
   });
 })
-.controller('BorrowController',function ($scope,$stateParams,$http) {
+.controller('BorrowController',function ($scope,$stateParams,$http,$ionicLoading,$ionicPopup) {
+  $ionicLoading.show({
+    template: '努力加载中 ...'
+  });
+
   var isbn = $stateParams.isbn;
+
   $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
     $scope.borrowData = res;
+    $ionicLoading.hide(); 
+  }).error(function(res){
+    $ionicPopup.alert({
+      title: '出错啦',
+      template: '网络出问题了 >< <br/>' + res
+    }); 
+    $ionicLoading.hide(); 
   });
 })
 .controller('AnnotationsController',function ($scope,$stateParams,$http) {
@@ -118,6 +181,22 @@ angular.module('app', ['ionic'])
 })
 .controller('ReviewController',function ($scope,$stateParams,$http) {
 
+})
+
+.directive('loadingStatusMessage', function() {
+  return {
+    link: function($scope, $element, $ionicLoading) {
+      var show = function() {
+        $element.css('display', 'block');
+      };
+      var hide = function() {
+        $element.css('display', 'none');
+      };
+      $scope.$on('loadingStatusActive', show);
+      $scope.$on('loadingStatusInactive', hide);
+      hide();
+    }
+  };
 });
 
 // custom directives

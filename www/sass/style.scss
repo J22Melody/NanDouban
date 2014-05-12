@@ -1,10 +1,14 @@
 @import "compass/utilities/general/clearfix";
 @import "compass/css3";
 
+// search
+
 #search-form{
     margin-top: 50px;
     padding: 10px;
 }
+
+// list
 
 .basic-info{
     white-space: normal;
@@ -25,6 +29,8 @@
         }
     }
 }
+
+// detail
 
 #detail{
     padding: 12px;
@@ -48,6 +54,8 @@ section.block{
     }
 }
 
+// borrow
+
 .borrow-list{
     li{
         line-height: 1.5;
@@ -57,4 +65,8 @@ section.block{
             display: inline;
         }
     }
+}
+
+[loading-status-message]{
+    
 }
