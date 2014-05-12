@@ -76,6 +76,7 @@ angular.module('app', ['ionic'])
       'request': function(config) {
         started();
         config.timeout = 20000;
+        config.headers['Authorization'] = 'Melody ' + '84d2e82b01379e1d8e78b88103a6da57';  
         return config || $q.when(config);
       },
       'response': function(response) {
@@ -83,11 +84,8 @@ angular.module('app', ['ionic'])
         return response || $q.when(response);
       },
      'responseError': function(rejection) {
-        alert('网络开小差了 ><');
+        // alert('网络开小差了 ><');
         ended();
-        if (canRecover(rejection)) {
-          return responseOrNewPromise
-        }
         return $q.reject(rejection);
       }
     };
@@ -124,12 +122,29 @@ angular.module('app', ['ionic'])
   var q = $stateParams.q;
   $scope.$parent.setTitle('搜索"' + q + '"的结果'); 
 
-  $http.get("https://api.douban.com/v2/book/search",
-  {
-    params: {'q': q}
-  }).success(function(res){
-    $scope.books = res.books;
+  $scope.books = [];
+
+  $scope.loadMore = function() {
+    var start = $scope.books.length;
+    $http.get("https://api.douban.com/v2/book/search",{params: {q: q,start: start,count: 10}})
+    .then(function(res){
+      $scope.books.concat(res.books);
+    },function(res){}
+    ).then(function(res){
+      $scope.$broadcast('scroll.infiniteScrollComplete');
+    });
+  };
+
+  $scope.$on('stateChangeSuccess', function() {
+    $scope.loadMore();
   });
+
+  // $http.get("https://api.douban.com/v2/book/search",
+  // {
+  //   params: {'q': q}
+  // }).success(function(res){
+  //   $scope.books = res.books;
+  // });
 })
 .controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
   var id = $stateParams.id;

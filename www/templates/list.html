@@ -1,5 +1,9 @@
+<ion-infinite-scroll on-infinite="loadMore()" distance="10%">
+
+</ion-infinite-scroll>
+
 <ul class="list">
-    <li ng-repeat="book in books" class="item">
+    <li ng-repeat="book in books" class="item" infinite-scroll='loadMore()' infinite-scroll-distance='3'>
         <a ui-sref="detail({id: book.id})" class="basic-info">
             <ng-include src="'templates/basic_info.html'"></ng-include> 
         </a>
