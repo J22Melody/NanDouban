@@ -81,6 +81,14 @@ angular.module('app', ['ionic'])
       'response': function(response) {
         ended();
         return response || $q.when(response);
+      },
+     'responseError': function(rejection) {
+        alert('网络开小差了 ><');
+        ended();
+        if (canRecover(rejection)) {
+          return responseOrNewPromise
+        }
+        return $q.reject(rejection);
       }
     };
   });
@@ -106,10 +114,6 @@ angular.module('app', ['ionic'])
   };
 })
 .controller('ListController',function ($scope,$stateParams,$http,$ionicLoading,$ionicPopup) {
-  $ionicLoading.show({
-    template: '努力加载中 ...'
-  });
-
   var q = $stateParams.q;
 
   $http.get("https://api.douban.com/v2/book/search",
@@ -117,49 +121,20 @@ angular.module('app', ['ionic'])
     params: {'q': q}
   }).success(function(res){
     $scope.books = res.books;
-    $ionicLoading.hide(); 
-  }).error(function(res){
-    $ionicPopup.alert({
-      title: '出错啦',
-      template: '网络出问题了 >< <br/>' + res
-    }); 
-    $ionicLoading.hide(); 
   });
 })
 .controller('DetailController',function ($scope,$stateParams,$http,$sanitize,$ionicLoading,$ionicPopup) {
-  $ionicLoading.show({
-    template: '努力加载中 ...'
-  });
-
   var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.book = res;
-    $ionicLoading.hide(); 
-  }).error(function(res){
-    $ionicPopup.alert({
-      title: '出错啦',
-      template: '网络出问题了 >< <br/>' + res
-    }); 
-    $ionicLoading.hide(); 
   });
 })
 .controller('BorrowController',function ($scope,$stateParams,$http,$ionicLoading,$ionicPopup) {
-  $ionicLoading.show({
-    template: '努力加载中 ...'
-  });
-
   var isbn = $stateParams.isbn;
 
   $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
     $scope.borrowData = res;
-    $ionicLoading.hide(); 
-  }).error(function(res){
-    $ionicPopup.alert({
-      title: '出错啦',
-      template: '网络出问题了 >< <br/>' + res
-    }); 
-    $ionicLoading.hide(); 
   });
 })
 .controller('AnnotationsController',function ($scope,$stateParams,$http) {
@@ -183,30 +158,24 @@ angular.module('app', ['ionic'])
 
 })
 
+// custom directives
+
 .directive('loadingStatusMessage', function() {
   return {
     link: function($scope, $element, $ionicLoading) {
       var show = function() {
-        $element.css('display', 'block');
+        var backdrop = document.querySelector('.backdrop');
+        if(backdrop) backdrop.className += " active visible";
+        $element.css('opacity', '1');
       };
       var hide = function() {
-        $element.css('display', 'none');
+        var backdrop = document.querySelector('.backdrop');
+        if(backdrop) backdrop.className = "backdrop";
+        $element.css('opacity', '0'); 
       };
       $scope.$on('loadingStatusActive', show);
       $scope.$on('loadingStatusInactive', hide);
-      hide();
     }
   };
 });
 
-// custom directives
-// .directive('back', ['$window', function($window) {
-//   return {
-//     restrict: 'A',
-//     link: function (scope, elem, attrs) {
-//       elem.bind('click', function () {
-//         $window.history.back();
-//       });
-//     }
-//   };
-// }]);
