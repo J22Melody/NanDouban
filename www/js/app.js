@@ -84,7 +84,11 @@ angular.module('app', ['ionic'])
         return response || $q.when(response);
       },
      'responseError': function(rejection) {
-        // alert('网络开小差了 ><');
+        var netErrMsg =  document.querySelector('[network-error-message]')
+        netErrMsg.style.opacity = 1;
+        setTimeout(function(){
+          netErrMsg.style.opacity = 0;
+        },1500);
         ended();
         return $q.reject(rejection);
       }

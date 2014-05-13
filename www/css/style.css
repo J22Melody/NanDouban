@@ -61,7 +61,7 @@ section.block .operation {
 }
 
 /* line 70, ../sass/style.scss */
-[loading-status-message] {
+[loading-status-message], [network-error-message] {
   -webkit-transition: 0.2s opacity linear;
   -moz-transition: 0.2s opacity linear;
   transition: 0.2s opacity linear;
