@@ -59,18 +59,21 @@ angular.module('app', ['ionic'])
 
   // 监视http请求
   $httpProvider.interceptors.push(function($q,$rootScope) {
-    var activeRequests = 0;
+    // var activeRequests = 0;
     var started = function() {
-      if(activeRequests==0) {
+      // if(activeRequests==0) {
         $rootScope.$broadcast('loadingStatusActive');
-      }    
-      activeRequests++;
+      // }    
+      // activeRequests++;
     };
     var ended = function() {
-      activeRequests--;
-      if(activeRequests==0) {
+      // activeRequests--;
+      // if(activeRequests==0) {
         $rootScope.$broadcast('loadingStatusInactive');
-      }
+      // }
+    };
+    var error = function() {
+      $rootScope.$broadcast('loadingStatusError');
     };
     return {
       'request': function(config) {
@@ -84,12 +87,7 @@ angular.module('app', ['ionic'])
         return response || $q.when(response);
       },
      'responseError': function(rejection) {
-        var netErrMsg =  document.querySelector('[network-error-message]')
-        netErrMsg.style.opacity = 1;
-        setTimeout(function(){
-          netErrMsg.style.opacity = 0;
-        },1500);
-        ended();
+        error();
         return $q.reject(rejection);
       }
     };
@@ -206,8 +204,15 @@ angular.module('app', ['ionic'])
         if(backdrop) backdrop.className = "backdrop";
         $element.css('opacity', '0'); 
       };
+      var error = function() {
+        $element.html('网络异常 QAQ'); 
+        setTimeout(function(){
+          hide();
+        },1000);
+      }
       $scope.$on('loadingStatusActive', show);
       $scope.$on('loadingStatusInactive', hide);
+      $scope.$on('loadingStatusError', error);
     }
   };
 });
