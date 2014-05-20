@@ -79,7 +79,7 @@ angular.module('app', ['ionic'])
       'request': function(config) {
         started();
         config.timeout = 20000;
-        // config.headers['Authorization'] = 'Melody ' + '84d2e82b01379e1d8e78b88103a6da57';  
+        // config.headers['Authorization'] = 'Bearer ' + '725bfa740041e76e5713ef5c00c5b64a';  //token
         return config || $q.when(config);
       },
       'response': function(response) {
@@ -137,16 +137,7 @@ angular.module('app', ['ionic'])
     });
   };
 
-  $scope.$on('stateChangeSuccess', function() {
-    $scope.loadMore();
-  });
-
-  // $http.get("https://api.douban.com/v2/book/search",
-  // {
-  //   params: {'q': q}
-  // }).success(function(res){
-  //   $scope.books = res.books;
-  // });
+  $scope.loadMore();
 })
 .controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
   var id = $stateParams.id;

@@ -3,7 +3,7 @@ var app = express();
 
 app.get('/fetchBorrowDataByIsbn', function(req, res){
     if(!req.query.isbn){
-        res.send(false); 
+        res.send(false);
         return;
     }
     var fnl = require('./fetch-nju-lib');
