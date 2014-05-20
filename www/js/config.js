@@ -24,7 +24,12 @@ angular.module('app.config', [])
   state('borrow', {
     url: '/borrow/:isbn',
     controller: 'BorrowController',
-    templateUrl: 'templates/borrow.html' 
+    templateUrl: 'templates/borrow.html',
+    resolve: {
+        borrowData: function(FetchBorrowDataByIsbn,$stateParams){
+            return FetchBorrowDataByIsbn($stateParams.isbn);
+        }
+    }
   }).
   state('annotations', {
     url: '/detail/:id/annotations',
@@ -52,8 +57,8 @@ angular.module('app.config', [])
     return {
       'request': function(config) {
         $rootScope.$broadcast('loadingStatusActive');
-        config.timeout = 20000;
-        // config.headers['Authorization'] = 'Bearer ' + '725bfa740041e76e5713ef5c00c5b64a';  //token
+        config.timeout = 15000;
+        // config.headers['Authorization'] = 'Melody ' + '84d2e82b01379e1d8e78b88103a6da57';  
         return config || $q.when(config);
       },
       'response': function(response) {

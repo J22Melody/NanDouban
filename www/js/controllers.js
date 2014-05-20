@@ -52,17 +52,9 @@ angular.module('app.controllers', [])
     $scope.book = res;
   });
 })
-.controller('BorrowController',function ($scope,$stateParams,$http) {
+.controller('BorrowController',function ($scope,$stateParams,$http,borrowData) {
   $scope.$parent.setTitle("馆藏信息"); 
-  var isbn = $stateParams.isbn;
-
-  $http.get("http://vps.jiangzifan.com:3000/fetchBorrowDataByIsbn",{params:{'isbn': isbn}}).success(function(res){
-    if(res != 'false'){
-      $scope.borrowData = res;
-    }else{
-      $scope.notFound = "没有在图书馆里找到这本书";
-    }
-  });
+  $scope.borrowData = borrowData;
 })
 .controller('AnnotationsController',function ($scope,$stateParams,$http) {
   var id = $stateParams.id;
