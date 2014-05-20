@@ -4,6 +4,9 @@
     </div> 
     <section class="block">
         <a ui-sref="borrow({isbn: book.isbn13})" class="operation button button-balanced">馆藏信息</a>
+        <a ng-hide="collected()" ng-click="collect()" class="operation button button-balanced">收藏</a>
+        <a ng-show="collected()" ng-click="uncollect()" class="operation button button-balanced">取消收藏</a>
+        <br/>
         <a ui-sref="annotations({id: book.id})" class="operation button button-balanced">读书笔记</a>
         <a ui-sref="reviews({id: book.id})" class="operation button button-balanced">书评</a>
     </section>

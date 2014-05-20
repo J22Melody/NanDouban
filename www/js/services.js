@@ -20,4 +20,26 @@ angular.module('app.services', [])
 
         return delay.promise;
     };
+})
+
+.factory('Collect',function($q,$http){ 
+    var collection = localStorage.collection;
+    if(collection){
+        collection = JSON.parse(collection);
+    }else{
+        collection = [];
+    }
+    return {
+        collect: function(id){
+            if(!collection.indexOf(id) != -1){
+                collection.push(id);
+            }
+            localStorage.collection = JSON.stringify(collection);
+        },
+        uncollect: function(id){
+            collection.splice(collection.indexOf(id),1);
+            localStorage.collection = JSON.stringify(collection);
+        },
+        list: collection
+    };
 });

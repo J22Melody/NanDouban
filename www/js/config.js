@@ -50,6 +50,11 @@ angular.module('app.config', [])
     url: '/review/:id',
     controller: 'ReviewController',
     templateUrl: 'templates/review.html' 
+  }).
+  state('collect', { 
+    url: '/collect',
+    controller: 'CollectController',
+    templateUrl: 'templates/collect.html' 
   });
 
   // 监视http请求
