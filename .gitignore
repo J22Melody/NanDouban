@@ -8,3 +8,7 @@ plugins/
 npm-debug.log
 *.apk
 *.keystore
+bower.json
+gulpfile.js
+ionic.project
+package.json
