@@ -6,3 +6,5 @@ merges/
 platforms/
 plugins/
 npm-debug.log
+*.apk
+*.keystore
