@@ -32,12 +32,12 @@ angular.module('app.controllers', [])
   $scope.books = [];
 
   $scope.loadMore = function() {
-    var start = $scope.books.length;
-    $http.get("https://api.douban.com/v2/book/search",{params: {q: q,start: start,count: 10}})
+      var start = $scope.books.length;
+      $http.get("https://api.douban.com/v2/book/search", { params: { q: q, start: start, count: 10 } })
     .then(function(res){
       $scope.books = $scope.books.concat(res.data.books);
-    },function(res){}
-    ).then(function(res){
+    })
+    .then(function (res) {
       $scope.$broadcast('scroll.infiniteScrollComplete');
     });
   };
@@ -84,11 +84,20 @@ angular.module('app.controllers', [])
     $scope.annotation = res;
   });
 })
-.controller('ReviewsController',function ($scope,$stateParams,$http) {
+.controller('ReviewsController', function ($scope, $stateParams, $http) {
+    var id = $stateParams.id;
 
+    $http.get("http://api.douban.com/v2/book/" + id + "/reviews").success(function (res) {
+        $scope.reviews = res.reviews;
+    });
 })
 .controller('ReviewController',function ($scope,$stateParams,$http) {
+    var id = $stateParams.id;
 
+    $http.get("http://book.douban.com/review/" + id).success(function (res) {
+        var xpathresult = document.evaluate('//*[@id="link-report"]/span', new DomParser().parseFromString(res, "text/html"), null, XPathResult.ANY_TYPE, null);
+        $scope.review = { "text": xpathresult.stringValue };
+    });
 })
 .controller('CollectController',function ($scope,$http,Collect) {
     $scope.$parent.setTitle("我的收藏");

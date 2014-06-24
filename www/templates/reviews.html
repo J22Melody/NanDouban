@@ -1,0 +1,11 @@
+<ul>
+    <li ng-repeat="review in reviews">
+        <a ui-sref="review({id:review.id})">
+            <span>{{review.author.name}}</span><br />
+            <img ng-src="{{review.author.avatar}}" />
+            <h2>{{review.title}}</h2>
+            <p>{{review.summary}}</p>
+            <span>{{review.votes}}人说有用</span>
+        </a>
+    </li>
+</ul>
