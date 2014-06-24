@@ -105,7 +105,6 @@ angular.module('app.controllers', [])
             result = result + thisNode.textContent;
             thisNode = xpathresult.iterateNext();
         }
-        console.log(result)
         $scope.review = { "text": result };
     });
 })
