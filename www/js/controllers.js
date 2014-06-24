@@ -91,12 +91,22 @@ angular.module('app.controllers', [])
         $scope.reviews = res.reviews;
     });
 })
-.controller('ReviewController',function ($scope,$stateParams,$http) {
+.controller('ReviewController', function ($scope, $stateParams, $http) {
     var id = $stateParams.id;
 
-    $http.get("http://book.douban.com/review/" + id).success(function (res) {
-        var xpathresult = document.evaluate('//*[@id="link-report"]/span', new DomParser().parseFromString(res, "text/html"), null, XPathResult.ANY_TYPE, null);
-        $scope.review = { "text": xpathresult.stringValue };
+    $http.get("http://book.douban.com/review/" + id + "/").success(function (res) {
+        var doc = new DOMParser().parseFromString(res, 'text/html');
+        var xpathresult = doc.evaluate('//*[@id="link-report"]/span/text()', doc, null, XPathResult.ANY_TYPE, null);
+        var thisNode = xpathresult.iterateNext();
+        var result = "";
+        while (thisNode) {
+            console.log(thisNode)
+            result = result + "<br/>";
+            result = result + thisNode.textContent;
+            thisNode = xpathresult.iterateNext();
+        }
+        console.log(result)
+        $scope.review = { "text": result };
     });
 })
 .controller('CollectController',function ($scope,$http,Collect) {

@@ -119,6 +119,7 @@
     <Content Include="www\templates\annotations.html" />
     <Content Include="www\templates\basic_info.html" />
     <Content Include="www\templates\borrow.html" />
+    <Content Include="www\templates\collect.html" />
     <Content Include="www\templates\detail.html" />
     <Content Include="www\templates\list.html" />
     <Content Include="www\templates\review.html" />
