@@ -22,10 +22,10 @@
 
     .info{
         margin-left: 120px;
-        font-size: 14px; 
+        font-size: 14px;
 
         h3{
-            font-size: 16px; 
+            font-size: 16px;
         }
     }
 }
@@ -86,4 +86,14 @@ section.block{
     font-size: 15px;
     margin-left: -65.5px;
     margin-top: -30px;
+}
+
+.bar-header h1{
+  left: 0 !important;
+  right: 0 !important;
+  padding-right: 50px; 
+  display: inline-block;
+  width: 100%;
+  position: relative !important;
+  top: -5px !important;
 }
