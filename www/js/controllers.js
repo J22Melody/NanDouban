@@ -44,12 +44,26 @@ angular.module('app.controllers', [])
 
   $scope.loadMore();
 })
-.controller('DetailController',function ($scope,$stateParams,$http,$sanitize) {
+.controller('DetailController',function ($scope,$stateParams,$http,$sanitize,Collect) {
   var id = $stateParams.id;
 
   $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
     $scope.$parent.setTitle(res.title); 
     $scope.book = res;
+
+    $scope.collect = Collect;
+
+    $scope.collected = function(){
+        return Collect.list.indexOf($scope.book.id) != -1;
+    }
+
+    $scope.collect = function(){
+        Collect.collect($scope.book.id);
+    };
+
+    $scope.uncollect = function(){
+        Collect.uncollect($scope.book.id);
+    };
   });
 })
 .controller('BorrowController',function ($scope,$stateParams,$http,borrowData) {
@@ -75,4 +89,14 @@ angular.module('app.controllers', [])
 })
 .controller('ReviewController',function ($scope,$stateParams,$http) {
 
+})
+.controller('CollectController',function ($scope,$http,Collect) {
+    $scope.$parent.setTitle("我的收藏");
+    $scope.books = [];
+    for(var i in Collect.list){
+        var id = Collect.list[i];
+        $http.get("https://api.douban.com/v2/book/"+id).success(function(res){
+            $scope.books.push(res);
+        });
+    }
 });

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.ionicframework.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>HelloCordova</name>
+    <name>南豆瓣</name>
     <description>
-        An Ionic Framework and Cordova project.
+        豆瓣读书南大图书馆订制版
     </description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+    <author email="j22melody@gmail.com" href="http://jiangzifan.com/">
+      Zifan Jiang
     </author>
     <content src="index.html" />
     <access origin="*" />
