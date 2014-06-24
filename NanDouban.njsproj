@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>NanDouban</Name>
+    <RootNamespace>NanDouban</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>f646e6bd-1980-4c1d-8c4e-762be1f55a94</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>server.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <NodejsPort>1337</NodejsPort>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="gulpfile.js" />
+    <Compile Include="server.js" />
+    <Compile Include="server\app.js" />
+    <Compile Include="server\fetch-nju-lib.js" />
+    <Compile Include="www\js\app.js" />
+    <Compile Include="www\js\config.js" />
+    <Compile Include="www\js\controllers.js" />
+    <Compile Include="www\js\directives.js" />
+    <Compile Include="www\js\filters.js" />
+    <Compile Include="www\js\services.js" />
+    <Compile Include="www\lib\ionic\js\angular-ui\angular-ui-router.js" />
+    <Compile Include="www\lib\ionic\js\angular-ui\angular-ui-router.min.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-animate.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-animate.min.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-resource.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-resource.min.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-sanitize.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular-sanitize.min.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular.js" />
+    <Compile Include="www\lib\ionic\js\angular\angular.min.js" />
+    <Compile Include="www\lib\ionic\js\ionic-angular.js" />
+    <Compile Include="www\lib\ionic\js\ionic-angular.min.js" />
+    <Compile Include="www\lib\ionic\js\ionic.bundle.js" />
+    <Compile Include="www\lib\ionic\js\ionic.bundle.min.js" />
+    <Compile Include="www\lib\ionic\js\ionic.js" />
+    <Compile Include="www\lib\ionic\js\ionic.min.js" />
+    <Content Include=".gitignore" />
+    <Content Include="config.xml" />
+    <Content Include="ionic.project" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Content Include="server\.gitignore" />
+    <Content Include="server\package.json" />
+    <Content Include="Web.config" />
+    <Content Include="www\.gitignore" />
+    <Content Include="www\bower.json" />
+    <Content Include="www\config.rb" />
+    <Content Include="www\css\style.css" />
+    <Content Include="www\img\ionic.png" />
+    <Content Include="www\index.html" />
+    <Content Include="www\lib\ionic\css\ionic.css" />
+    <Content Include="www\lib\ionic\css\ionic.min.css" />
+    <Content Include="www\lib\ionic\fonts\ionicons.eot" />
+    <Content Include="www\lib\ionic\fonts\ionicons.svg" />
+    <Content Include="www\lib\ionic\fonts\ionicons.ttf" />
+    <Content Include="www\lib\ionic\fonts\ionicons.woff" />
+    <Content Include="www\lib\ionic\scss\ionic.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\ionicons.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-animation.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-font.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-icons.scss" />
+    <Content Include="www\lib\ionic\scss\ionicons\_ionicons-variables.scss" />
+    <Content Include="www\lib\ionic\scss\_action-sheet.scss" />
+    <Content Include="www\lib\ionic\scss\_animations.scss" />
+    <Content Include="www\lib\ionic\scss\_backdrop.scss" />
+    <Content Include="www\lib\ionic\scss\_badge.scss" />
+    <Content Include="www\lib\ionic\scss\_bar.scss" />
+    <Content Include="www\lib\ionic\scss\_button-bar.scss" />
+    <Content Include="www\lib\ionic\scss\_button.scss" />
+    <Content Include="www\lib\ionic\scss\_checkbox.scss" />
+    <Content Include="www\lib\ionic\scss\_form.scss" />
+    <Content Include="www\lib\ionic\scss\_grid.scss" />
+    <Content Include="www\lib\ionic\scss\_items.scss" />
+    <Content Include="www\lib\ionic\scss\_list.scss" />
+    <Content Include="www\lib\ionic\scss\_loading.scss" />
+    <Content Include="www\lib\ionic\scss\_menu.scss" />
+    <Content Include="www\lib\ionic\scss\_mixins.scss" />
+    <Content Include="www\lib\ionic\scss\_modal.scss" />
+    <Content Include="www\lib\ionic\scss\_platform.scss" />
+    <Content Include="www\lib\ionic\scss\_popup.scss" />
+    <Content Include="www\lib\ionic\scss\_progress.scss" />
+    <Content Include="www\lib\ionic\scss\_radio.scss" />
+    <Content Include="www\lib\ionic\scss\_range.scss" />
+    <Content Include="www\lib\ionic\scss\_reset.scss" />
+    <Content Include="www\lib\ionic\scss\_scaffolding.scss" />
+    <Content Include="www\lib\ionic\scss\_select.scss" />
+    <Content Include="www\lib\ionic\scss\_slide-box.scss" />
+    <Content Include="www\lib\ionic\scss\_split-pane.scss" />
+    <Content Include="www\lib\ionic\scss\_tabs.scss" />
+    <Content Include="www\lib\ionic\scss\_toggle.scss" />
+    <Content Include="www\lib\ionic\scss\_type.scss" />
+    <Content Include="www\lib\ionic\scss\_util.scss" />
+    <Content Include="www\lib\ionic\scss\_variables.scss" />
+    <Content Include="www\lib\ionic\version.json" />
+    <Content Include="www\README.md" />
+    <Content Include="www\sass\style.scss" />
+    <Content Include="www\templates\annotation.html" />
+    <Content Include="www\templates\annotations.html" />
+    <Content Include="www\templates\basic_info.html" />
+    <Content Include="www\templates\borrow.html" />
+    <Content Include="www\templates\detail.html" />
+    <Content Include="www\templates\list.html" />
+    <Content Include="www\templates\review.html" />
+    <Content Include="www\templates\reviews.html" />
+    <Content Include="www\templates\search.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="server\" />
+    <Folder Include="www\" />
+    <Folder Include="www\css\" />
+    <Folder Include="www\img\" />
+    <Folder Include="www\js\" />
+    <Folder Include="www\lib\" />
+    <Folder Include="www\lib\ionic\" />
+    <Folder Include="www\lib\ionic\css\" />
+    <Folder Include="www\lib\ionic\fonts\" />
+    <Folder Include="www\lib\ionic\js\" />
+    <Folder Include="www\lib\ionic\js\angular-ui\" />
+    <Folder Include="www\lib\ionic\js\angular\" />
+    <Folder Include="www\lib\ionic\scss\" />
+    <Folder Include="www\lib\ionic\scss\ionicons\" />
+    <Folder Include="www\sass\" />
+    <Folder Include="www\templates\" />
+  </ItemGroup>
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

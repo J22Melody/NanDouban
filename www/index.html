@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html>
   <head>
@@ -21,6 +21,7 @@
     <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
     <script src="cordova.js"></script>
   </head>
+  <!-- Annotation: root module `app' for the application, use the controller `MainController' to compile.-->
   <body ng-app="app" ng-controller="MainController">
 
     <ion-side-menus>
@@ -29,6 +30,8 @@
 
         <ion-header-bar class="bar bar-header bar-balanced">
 
+          <!-- Annotation: ng-click: behaviour when element is clicked. ng-hide: hide element when the condition is True-->
+          <!-- Annotation: both `historyBack()' and the condition returning boolean are compiled by the controller.-->
           <button class="button button-icon" ng-click="historyBack()" ng-hide="$state.current.name == 'search'"> 
             <i class="icon ion-arrow-left-c"></i>
           </button>
